@@ -11,7 +11,7 @@ function Navbar() {
       <div className="flex flex-row justify-between p-10 ">
         
         {/* Logo */}
-        <div className="font-logo font-extralight text-2xl" >
+        <div className="font-logo font-extralight text-xl" >
           Venturespective
         </div>
 

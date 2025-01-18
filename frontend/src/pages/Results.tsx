@@ -1,5 +1,6 @@
 import Button from "../components/Button.tsx";
 import {Link} from "react-router-dom";
+import {useState} from "react";
 
 export const Results = ()=>{
     const superStyle ="align-super text-xs";
@@ -7,6 +8,14 @@ export const Results = ()=>{
     const zeroto49 = "text-red";
     const fiftyto75 = "text-yellow";
     const seventysixto100 = "text-deepgreen";
+
+    const [showForm, setShowForm] = useState(false);
+    const defaultEmailForm = {
+        "fname": "", "lname": "", "email": "Enter Your Email"
+    };
+
+    const [emailForm, setEmailForm]
+        = useState(defaultEmailForm);
 
     const navitems = [
         {name: "Summary", href:"#summary"},
@@ -26,11 +35,33 @@ export const Results = ()=>{
         { id: 5, header: 'Location', accessor: 'location' },
     ];
 
+    function sendEmail(){
+        console.log("email sent to ", emailForm.email);
+    }
     function rerun(){
         console.log("rerun button pressed");
     }
     return(
         <div className={"flex flex-row gap-16 pr-16"}>
+            {showForm ?
+                <form method={"get"}>
+                    <form noValidate onSubmit={e => e.preventDefault()}>
+                    <div className="grid items-center min-w-full">
+
+                        {/*Account Section*/}
+                        <p className={"text-3xl mb-6"}>Editing User</p>
+                        <div className={"grid grid-cols-2 gap-4"}>
+                            <label htmlFor={"email"}>Email Address</label>
+                            <input value={emailForm.email} id={"email"} name={"email"} type={"email"}/>
+                        </div>
+                        <Button onClick={sendEmail}>Send Report to Your Email</Button>
+                    </div>
+                    </form>
+                </form>
+
+                :
+                // show nothing
+                <></>}
             {/*sidebar*/}
             <div className={"flex bg-beige max-w-[165px] h-screen sticky top-0 items-center"}>
                 <ul className="flex flex-col gap-8 w-full">

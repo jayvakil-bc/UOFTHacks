@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Nunito', 'sans-serif'],
-        logo: ['Roboto', 'sans-serif']
+        logo: ['Questrial', 'regular 400']
       },
       colors: {
         beige : '#FFFBF4',
