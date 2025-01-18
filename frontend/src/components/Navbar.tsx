@@ -17,12 +17,12 @@ function Navbar() {
         {/* Links */}
         <div className="flex justify-center items-center text-sm">
           <ul className="w-[500px] flex flex-row justify-evenly items-center text-center border rounded-lg border-camel">
-          <li className="flex-1 border-r border-cream py-1">
+          <li className="flex-1 border-r border-camel py-1">
               <Link to="/" className="hover:underline">
                 Estimator
               </Link>
             </li>
-            <li className="flex-1 border-r border-cream py-1">
+            <li className="flex-1 border-r border-camel py-1">
               <Link to="/dorahacks" className="hover:underline">
                 DoraHacks Entry
               </Link>

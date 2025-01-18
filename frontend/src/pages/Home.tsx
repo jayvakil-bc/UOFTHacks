@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import Map from '../components/Map';
+import MapApp from '../components/map/MapApp';
 
 function Home() {
   return (
@@ -12,11 +14,15 @@ function Home() {
 
       {/* Main */}
 
-      <div className="rounded-3xl h-[3000px] bg-shadow mt-10 mx-60">
+      <div className="rounded-3xl h-[1000px] bg-shadow mt-10 mx-60">
         <h2> Tell Us About Your Potential Restaurants</h2>
 
         <h3> Location </h3>
         <p> The intended location of your restaurant:</p>
+
+        <div className="flex justify-center">
+          <Map />
+        </div>
 
 
 
@@ -26,4 +32,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Home;
