@@ -6,9 +6,8 @@ function Navbar() {
 
 
   return (
-    <div className="w-full h-[100px]">
 
-      <div className="flex flex-row justify-between p-10 ">
+      <div className="flex flex-row justify-between m-10">
         
         {/* Logo */}
         <div className="font-logo font-extralight text-2xl" >
@@ -17,7 +16,7 @@ function Navbar() {
 
         {/* Links */}
         <div className="flex justify-center items-center text-sm">
-          <ul className="w-[500px] flex flex-row justify-evenly items-center text-center border rounded-lg border-cream">
+          <ul className="w-[500px] flex flex-row justify-evenly items-center text-center border rounded-lg border-camel">
           <li className="flex-1 border-r border-cream py-1">
               <Link to="/" className="hover:underline">
                 Estimator
@@ -38,8 +37,6 @@ function Navbar() {
 
       </div>
     
-
-    </div>
   )
 }
 
