@@ -11,7 +11,13 @@ module.exports = {
         green : '#CFE7C4',
         blue : '#C4DDE7',
         cream : '#E3C799',
-        shadow : 'rgba(227, 199, 153, 0.5)', 
+
+        camel: '#D4A373',
+        deepgreen : '#3BBA00',
+        red : '#C30000',
+        yellow : '#C3BF00',
+
+        shadow : 'rgba(227, 199, 153, 0.5)',
       },
     },
   },
