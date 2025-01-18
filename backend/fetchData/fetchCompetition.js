@@ -17,11 +17,10 @@ const apiKey = process.env.GOOGLE_PLACES_API_KEY;
         }
     );
     } catch(err) {
-addAlignment:
         console.log(err);
         throw err;
     }
-    return response.data.results.length; // Count of competitors
+    return response.data.results.length; 
 }
 
 export { fetchCompetition };
