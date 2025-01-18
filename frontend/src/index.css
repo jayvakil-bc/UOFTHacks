@@ -2,3 +2,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply text-4xl;
+        @apply pb-8;
+        @apply pt-4;
+    }
+    h2 {
+        @apply text-3xl;
+        @apply pb-8;
+        @apply pt-4;
+    }
+    h3 {
+        @apply text-xl;
+        @apply pb-4;
+        @apply pt-2;
+    }
+}
