@@ -1,4 +1,5 @@
 import React from "react";
+import {Row} from "../Types.ts";
 interface Col{
     header: string,
     accessor: string
@@ -20,7 +21,8 @@ const TableHeader: React.FC<HeaderProps> = ({columns, setFilter, toggleShowDD, c
                     key={accessor}
                     className={classname || defaultStyle}
                     onClick={()=>{
-                        setFilter(prevNote => ({...prevNote, ["column"]: accessor}) );
+                        // might be an issue
+                        setFilter((prevNote: Row) => ({...prevNote, ["column"]: accessor}) );
                         toggleShowDD();}
                     }
                 >

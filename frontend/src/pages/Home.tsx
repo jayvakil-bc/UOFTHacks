@@ -136,7 +136,7 @@ function Home() {
         </div>
 
         <div className="border-b border-deepgreen pt-[20px] pb-[40px]">
-          
+
           <h3 className="pb-0">Capital</h3>
           <p>How much capital do you have? (CAD):</p>
           <div>
@@ -146,7 +146,7 @@ function Home() {
         </div>
 
         <div className="border-b border-deepgreen pt-[20px] pb-[40px]">
-          
+
           <h3 className="pb-0">Team Size</h3>
           <p>How many employees do you expect to hire?:</p>
           <div>
