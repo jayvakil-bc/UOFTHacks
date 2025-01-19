@@ -9,6 +9,9 @@ div[aria-label="Draggable Marker"] {
   outline: none !important; /* Disable outline */
   box-shadow: none !important; /* Remove shadow */
 }
+
+
+
 /* .logo {
   height: 6em;
   padding: 1.5em;
