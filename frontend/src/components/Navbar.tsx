@@ -5,7 +5,7 @@ function Navbar() {
     const liStyle = "flex-1 rounded-lg";
 
     return (
-        <div className="flex flex-row justify-between mx-10 my-6">
+        <div className="flex flex-row justify-between mx-10 my-6 overflow-hidden">
 
             {/* Logo */}
             <div className="font-logo font-extralight text-deepgreen text-2xl">
@@ -13,8 +13,8 @@ function Navbar() {
             </div>
 
             {/* Links */}
-            <div className="flex justify-center items-center text-sm">
-                <ul className="w-[540px] flex flex-row justify-evenly items-center text-center border rounded-lg border-deepgreen">
+            <div className="flex justify-center items-center text-sm ">
+                <ul className="w-[540px] flex flex-row justify-evenly items-center text-center border rounded-lg border-deepgreen overflow-hidden">
                     <li className={liStyle}>
                         <NavLink to="/" className={({ isActive}) =>
                             isActive ? `${navLiStyle} bg-camel text-white`
