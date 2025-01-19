@@ -5,7 +5,6 @@ const AnalyzeRequest = () => {
 
   const sendAnalysisRequest = async () => {
     const payload = {
-      "location": "Sheppard-Yonge",
       "priceRange": "25",
       "theme": "study cafe",
       "description": "study cafe",

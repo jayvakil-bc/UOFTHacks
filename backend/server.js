@@ -24,9 +24,9 @@ app.get('/', (req, res) => {
 });
 
 app.post('/analyze', async (req, res) => {
-  const { location, priceRange, theme, description, latitude, longitude } = req.body;
-  console.log('Received analysis request:', { location, priceRange, theme, description, latitude, longitude });
-
+  const { priceRange, theme, description, latitude, longitude } = req.body;
+  console.log('Received analysis request:', { priceRange, theme, description, latitude, longitude });
+  const location = `${latitude},${longitude}`;
   const googlePlacesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=restaurant&key=${googlePlacesApiKey}`;
 
   try {
