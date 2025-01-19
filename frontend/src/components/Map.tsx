@@ -41,7 +41,7 @@ function MapComp() {
             //{...(search ? { conditionalProps} : {})} //was trying to make a conditional prop
           mapId="your-map-id" // Replace with your actual Map ID
           defaultCenter={markerPosition}
-          defaultZoom={12}
+          defaultZoom={11}
           gestureHandling="greedy"
           disableDefaultUI={true}
         >
@@ -53,11 +53,11 @@ function MapComp() {
           />
         </Map>
       </APIProvider>
-      <div className="mt-4">
+      {/* <div className="mt-4">
         <p>
           Current Coordinates: Latitude: {markerPosition.lat}, Longitude: {markerPosition.lng}
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }

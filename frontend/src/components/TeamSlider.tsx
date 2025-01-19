@@ -10,10 +10,7 @@ export default function TeamSlider({ onTeamChange }: MinimumDistanceSliderProps)
   const [value, setValue] = React.useState<number>(10); // Single value state
 
   // Handle changes while dragging the slider
-  const handleChange = (
-    event: Event,
-    newValue: number | number[]
-  ) => {
+  const handleChange = (event: Event, newValue: number | number[]) => {
     if (typeof newValue === "number") {
       setValue(newValue);
     }
@@ -32,23 +29,26 @@ export default function TeamSlider({ onTeamChange }: MinimumDistanceSliderProps)
 
   return (
     <Box sx={{ width: 550 }}>
-      <div className="flex justify-between mt-1 text-black font-normal text-sm">
+      <div className="flex justify-between mt-1 text-gray-800 font-medium text-sm">
         <span>0</span>
         <span>50+</span>
       </div>
       <Slider
         sx={{
-          color: "#CCD5AE",
+          color: "#3A5A40", // Muted dark green for the active track
           "& .MuiSlider-thumb": {
-            backgroundColor: "#7F6145",
+            backgroundColor: "#1F2937", // Charcoal gray for the thumb
             width: 14,
             height: 14,
           },
-          "& .MuiSlider-track": { backgroundColor: "#CCD5AE", height: 8 },
+          "& .MuiSlider-track": {
+            backgroundColor: "#3A5A40", // Muted dark green for the track
+            height: 8,
+          },
           "& .MuiSlider-rail": {
             opacity: 0.7,
             height: 8,
-            backgroundColor: "#D4A373",
+            backgroundColor: "#E5E7EB", // Light gray for the rail
           },
         }}
         value={value}
@@ -59,8 +59,8 @@ export default function TeamSlider({ onTeamChange }: MinimumDistanceSliderProps)
         onChangeCommitted={handleChangeCommitted} // Fires only on release
         valueLabelDisplay="off"
       />
-      <div className="mt-1 text-black font-normal text-sm text-left">
-        Employees Selected: {value.toLocaleString()} {value === 50? "+" : ""}
+      <div className="mt-1 text-gray-800 font-medium text-sm text-left">
+        Employees Selected: {value.toLocaleString()} {value === 50 ? "+" : ""}
       </div>
     </Box>
   );

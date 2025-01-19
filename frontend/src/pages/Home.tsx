@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Map from '../components/Map';
-import MapApp from '../components/map/MapApp';
 import CapSlider from '../components/CapSlider';
 import TeamSlider from '../components/TeamSlider';
 import Button from '../components/Button';
@@ -9,6 +8,28 @@ import Button from '../components/Button';
 function Home() {
   const [capital, setCapital] = useState(50000); // State for Capital slider
   const [teamSize, setTeamSize] = useState(5); // State for Team Size slider
+
+  const [selectedType, setSelectedType] = useState(""); // State for dropdown selection
+  const [customType, setCustomType] = useState(""); // State for custom input
+
+  const restaurantTypes = [
+    "Fine Dining",
+    "Casual Dining",
+    "Fast Casual",
+    "Fast Food",
+    "Café",
+    "Food Truck",
+    "Italian Restaurant",
+    "Chinese Restaurant",
+    "Japanese Restaurant",
+    "Mexican Restaurant",
+    "Indian Restaurant",
+    "Thai Restaurant",
+    "Mediterranean Restaurant",
+    "American Diner",
+    "Pizzeria",
+    "Other",
+  ];
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
@@ -20,15 +41,15 @@ function Home() {
 
         {/* Content */}
         <div className="relative z-10 text-center">
-          <h1 className="pt-10 font-semibold text-2xl">How Well Can My Restaurant Do?</h1>
-          <h3 className="text-lg">Location-Based Success Estimator for Restaurants</h3>
+          <h1 className="font-semibold">Will My Restaurant Be Successful?</h1>
+          <h3 className="">Data-driven success engine for your restaurant</h3>
         </div>
       </div>
 
       {/* Main */}
 
-      <div className="my-8 py-8 px-[75px] text-left rounded-3xl h-[1850px] bg-beige w-[700px]">
-        <h2> Tell Us About Your Potential Restaurants</h2>
+      <div className="my-8 py-8 px-[75px] text-left rounded-3xl h-[1850px] bg-shadow w-[700px]">
+        <h2 className="pb-1"> Tell Us About Your Potential Restaurant</h2>
         <h3> Location </h3>
         <p className="pb-1"> The intended location of your restaurant:</p>
 
@@ -36,17 +57,42 @@ function Home() {
           <Map />
         </div>
 
-        <div className="border-y border-camel pt-[20px] pb-[40px]">
-          <h3 className="pb-0">Cuisine</h3>
-          <p> The intended cuisine of your restaurant:</p>
-          <input
-            type="text"
-            placeholder="Enter cuisine type"
-            className="border border-camel rounded p-2 mt-2 w-full"
-          />
+        <div className="border-y border-deepgreen pt-[20px] pb-[40px]">
+          <h3 className="pb-0">Restaurant Type</h3>
+          <p>What style of restaurant would you like to open?</p>
+          {/* Dropdown and Text Input Container */}
+          <div className="flex items-center gap-4 mt-2">
+            {/* Dropdown Menu */}
+            <select
+              value={selectedType}
+              onChange={(e) => setSelectedType(e.target.value)}
+              className="border border-deepgreen rounded p-2 w-1/2"
+            >
+              <option value="" disabled>
+                Select a restaurant type
+              </option>
+              {restaurantTypes.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+
+            {/* Text Input for "Other" */}
+            <input
+              type="text"
+              value={customType}
+              onChange={(e) => setCustomType(e.target.value)}
+              placeholder="Enter custom restaurant type"
+              disabled={selectedType !== "Other"} // Disabled unless "Other" is selected
+              className={`border border-deepgreen rounded p-2 w-1/2 ${
+                selectedType === "Other" ? "bg-white" : "bg-gray-100"
+              }`}
+            />
+          </div>
         </div>
 
-        <div className="border-b border-camel pt-[20px] pb-[40px]">
+        <div className="border-b border-deepgreen pt-[20px] pb-[40px]">
           
           <h3 className="pb-0">Capital</h3>
           <p>How much capital do you have? (CAD):</p>
@@ -56,7 +102,7 @@ function Home() {
 
         </div>
 
-        <div className="border-b border-camel pt-[20px] pb-[40px]">
+        <div className="border-b border-deepgreen pt-[20px] pb-[40px]">
           
           <h3 className="pb-0">Team Size</h3>
           <p>How many employees do you expect to hire?:</p>
@@ -66,7 +112,7 @@ function Home() {
 
         </div>
 
-        <div className="border-b border-camel pt-[20px] pb-[40px]">
+        <div className="border-b border-deepgreen pt-[20px] pb-[40px]">
           <h3 className="pb-0">Price Range</h3>
           <p>How would you categorize the price of your food?</p>
           <div>
@@ -111,13 +157,13 @@ function Home() {
           </div>
         </div>
 
-        <div className="border-b border-camel pt-[20px] pb-[40px]">
+        <div className="border-b border-deepgreen pt-[20px] pb-[40px]">
           <h3 className="pb-0">Description </h3>
           <p> Share additional details about your restaurant (max 200 words)</p>
           <textarea
             placeholder="Enter relevant details"
             maxLength={200}
-            className="border border-camel rounded p-2 mt-2 w-full h-32 resize-none"
+            className="border border-deepgreen rounded p-2 mt-2 w-full h-32 resize-none"
           />
         </div>
 
