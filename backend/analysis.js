@@ -3,7 +3,7 @@ import fetchGooglePlacesData from "./fetchData/fetchGooglePlacesData.js";
 import { generateRecommendations } from "./fetchData/generateRecommendations.js";
 
 async function analyzeFeasibility(inputs) {
-    const { restaurant_type, team_size, budget, price_point, lat, long } = inputs;
+    const { restaurant_type, team_size, budget, price_point, lat, long, description } = inputs;
     const location = `${lat},${long}`;
 
     const competitors = await fetchCompetition(lat, long, restaurant_type);
@@ -24,7 +24,8 @@ async function analyzeFeasibility(inputs) {
         budget,
         price_point,
         lat, long,
-        competitors: nearbyCompetitors
+        competitors: nearbyCompetitors,
+        description
     });
 
     // Step 4: Return results
