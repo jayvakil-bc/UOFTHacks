@@ -55,14 +55,14 @@ function Home() {
     <div className="min-h-screen flex flex-col items-center justify-center">
 
       {/* Banner */}
-      <div className="relative h-[480px] w-full bg-[url('/banner.svg')] bg-cover bg-center flex items-center justify-center text-white">
+      <div className="relative h-[480px] w-full bg-[url('/grad.png')] bg-cover bg-center flex items-center justify-center text-white">
         {/* Black Transparent Overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+        {/* <div className="absolute inset-0 bg-black bg-opacity-30"></div> */}
 
         {/* Content */}
         <div className="relative z-10 text-center">
-          <h1 className="font-semibold">Will My Restaurant Be Successful?</h1>
-          <h3 className="">Data-driven success engine for your restaurant</h3>
+          <h1 className="font-semibold text-black">Serving Success from Every Angle </h1>
+          <h3 className="text-black">Data-driven success engine for your restaurant</h3>
         </div>
       </div>
 
@@ -70,7 +70,7 @@ function Home() {
 
       <form
         onSubmit={handleSubmit}
-        className="my-8 py-8 px-[75px] text-left rounded-3xl bg-shadow w-[700px]"
+        className="my-8 py-8 -pt-8 px-[75px] text-left rounded-3xl bg-shadow w-[700px]"
       >
         <h2 className="pb-4 text-2xl font-bold">Tell Us About Your Potential Restaurant</h2>
 
