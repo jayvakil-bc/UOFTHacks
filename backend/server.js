@@ -9,7 +9,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors());
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 const googlePlacesApiKey = process.env.GOOGLE_PLACES_API_KEY; // Using the provided API key
 const openAiApiKey = process.env.OPENAI_API_KEY; // Using the provided API key
 

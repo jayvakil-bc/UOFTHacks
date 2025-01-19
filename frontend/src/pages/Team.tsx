@@ -14,7 +14,7 @@ const AnalyzeRequest = () => {
     };
 
     try {
-      const res = await fetch('http://localhost:8000/analyze', {
+      const res = await fetch('http://localhost:3000/analyze', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
