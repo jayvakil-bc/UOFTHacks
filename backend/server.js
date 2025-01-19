@@ -1,11 +1,17 @@
 import express from 'express';
+import cors from 'cors';
 import axios from 'axios';
 import { OpenAI } from 'openai';
 import fetch from 'node-fetch';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 const app = express();
+app.use(cors());
 const port = process.env.PORT || 8000;
-const googlePlacesApiKey = GOOGLE_PLACES_API_KEY; // Using the provided API key
-const openAiApiKey = OPENAI_API_KEY; // Using the provided API key
+const googlePlacesApiKey = process.env.GOOGLE_PLACES_API_KEY; // Using the provided API key
+const openAiApiKey = process.env.OPENAI_API_KEY; // Using the provided API key
 
 const openai = new OpenAI({
   apiKey: openAiApiKey,

@@ -1,48 +1,45 @@
-import React from "react";
+import React, { useState } from 'react';
 
-function Team() {
-  const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
+const AnalyzeRequest = () => {
+  const [response, setResponse] = useState(null);
 
-    // Test data
-    const testPayload = {
-      restaurant_type: "study cafe",
-      team_size: "20",
-      budget: "1000",
-      priceRange: "25",
-      latitude: 43.7757,
-      longitude: 79.3451,
+  const sendAnalysisRequest = async () => {
+    const payload = {
+      "location": "Sheppard-Yonge",
+      "priceRange": "25",
+      "theme": "study cafe",
+      "description": "study cafe",
+      "latitude": 43.7757,
+      "longitude": 79.3451
     };
 
-    console.log("Test form submission data:", testPayload);
-
     try {
-      const response = await fetch("http://localhost:8000/form-submit", {
-        method: "POST",
+      const res = await fetch('http://localhost:8000/analyze', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(testPayload),
+        body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to submit data");
+      if (!res.ok) {
+        throw new Error(`Server error: ${res.status}`);
       }
 
-      const result = await response.json();
-      console.log("Analysis result:", result);
+      const data = await res.json();
+      setResponse(data.analysis);
     } catch (error) {
-      console.error("Error submitting data:", error);
+      console.error('Error making the API request:', error);
+      // setResponse('An error occurred while processing the request.');
     }
   };
 
   return (
     <div>
-      <button type="button" onClick={handleSubmit}>
-        Submit
-      </button>
+      <button onClick={sendAnalysisRequest}>Send Analysis Request</button>
+      {response && <div><h3>Test:</h3><pre>{response}</pre></div>}
     </div>
   );
-}
+};
 
-export default Team;
+export default AnalyzeRequest;
