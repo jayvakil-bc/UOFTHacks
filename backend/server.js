@@ -4,8 +4,8 @@ import { OpenAI } from 'openai';
 import fetch from 'node-fetch';
 const app = express();
 const port = process.env.PORT || 8000;
-const googlePlacesApiKey = 'AIzaSyDaN3_1MNcm_9VDbyRZtSaq9t-5YjitO8Q'; // Using the provided API key
-const openAiApiKey = 'sk-HpdIulBgL-4ZkCCfdyIjQb-Jehk3qQ2KffXkKY25APT3BlbkFJweIwWw9jfwJJtMae7lRbF7hxiejdwDGiTLqPoqF5sA'; // Using the provided API key
+const googlePlacesApiKey = GOOGLE_PLACES_API_KEY; // Using the provided API key
+const openAiApiKey = OPENAI_API_KEY; // Using the provided API key
 
 const openai = new OpenAI({
   apiKey: openAiApiKey,
