@@ -53,7 +53,7 @@ export const Results = ()=>{
     const textboxstyle = "bg-transparent w-full mt-1 py-1 px-2 border border-camel";
     const navitemstyle = "text-sm flex flex-col p-2 w-full hover:text-white hover:font-medium hover:bg-camel hover:cursor-pointer";
     return(
-        <div className={"flex flex-row items-center justify-center gap-16 pr-16 border-t border-camel"}>
+        <div className={"flex flex-row items-center justify-center gap-16 border-t border-camel"}>
             {showForm ?
                 <div className={"absolute rounded-xl fixed top-0 left-0 z-10 flex items-center justify-center backdrop-grayscale min-w-full min-h-screen"}>
                 <form ref={form} onSubmit={sendEmail}
