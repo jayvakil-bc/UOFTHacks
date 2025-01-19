@@ -118,7 +118,7 @@ export const Results = ()=>{
                 {/*<p>Your Hot Pot Restaurant in Markham is 50% likely to break even in about 10 years given the majority Chinese population and 100-person daily foot traffic in the area.</p>*/}
                 </div>
 
-                <div className={"bg-beige rounded-xl px-16 py-12 max-w-[1050px] text-left"}>
+                <div className={"bg-beige rounded-xl px-16 py-12 mb-16 max-w-[1050px] text-left"}>
                     <ReactMarkdown className={"flex flex-col gap-6"}>{globalResults.summary}</ReactMarkdown>
                     {/*<Element id={"summary"} name={"summary"}><h2>Summary</h2></Element>*/}
                     {/*<p>{globalResults.summary}</p>*/}
