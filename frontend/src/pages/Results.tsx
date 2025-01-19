@@ -6,9 +6,8 @@ import { Link, Element } from "react-scroll";
 export const Results = ()=>{
     const superStyle ="align-super text-xs";
     const emphasis ="font-bold";
-    // const zeroto49 = "text-red";
     const fiftyto75 = "text-yellow";
-    // const seventysixto100 = "text-deepgreen";
+
 
     const [showForm, setShowForm] = useState(false);
     const [confirmation, setConfirmation] = useState(false);
@@ -22,14 +21,6 @@ export const Results = ()=>{
         {name: "Rerun", href:"rerun"},
     ];
 
-    // const columns = [
-    //     { id: 1, header: 'Percentage', accessor: 'percentage' },
-    //     { id: 2, header: 'Age', accessor: 'age' },
-    //     { id: 3, header: 'Ethnicity', accessor: 'ethnicity' },
-    //     { id: 3, header: 'Restaurant', accessor: 'restaurant' },
-    //     { id: 4, header: 'Market Share', accessor: 'marketshare' },
-    //     { id: 5, header: 'Location', accessor: 'location' },
-    // ];
 
     const form = useRef("");
     function sendEmail(event: React.FormEvent){

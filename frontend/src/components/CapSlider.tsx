@@ -11,7 +11,7 @@ export default function CapSlider({ onCapChange }: MinimumDistanceSliderProps) {
 
   // Handle changes while dragging the slider
   const handleChange = (
-    event: Event,
+    _event: Event,
     newValue: number | number[]
   ) => {
     if (typeof newValue === "number") {
@@ -21,7 +21,7 @@ export default function CapSlider({ onCapChange }: MinimumDistanceSliderProps) {
 
   // Handle committed changes (when the user stops interacting with the slider)
   const handleChangeCommitted = (
-    event: React.SyntheticEvent | Event,
+    _event: React.SyntheticEvent | Event,
     newValue: number | number[]
   ) => {
     if (typeof newValue === "number") {

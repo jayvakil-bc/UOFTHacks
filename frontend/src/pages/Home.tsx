@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Map from '../components/Map';
-import CapSlider from '../components/CapSlider';
 import TeamSlider from '../components/TeamSlider';
 import Button from '../components/Button';
 
 
 function Home() {
   // const [capital, setCapital] = useState(50000);
-  const [teamSize, setTeamSize] = useState(5);
+  const [, setTeamSize] = useState(5);
   const [selectedType, setSelectedType] = useState("");
   const [customType, setCustomType] = useState("");
   const [markerPosition, setMarkerPosition] = useState({
@@ -115,12 +114,6 @@ function Home() {
           </div>
         </div>
 
-        {/* Capital Section
-        <div className="border-b border-deepgreen py-6">
-          <h3 className="font-semibold text-lg">Capital</h3>
-          <p className="pb-1 text-gray-600">How much capital do you have? (CAD):</p>
-          <CapSlider onCapChange={(value) => setCapital(value)} />
-        </div> */}
 
         {/* Team Size Section */}
         <div className="border-b border-deepgreen py-6">

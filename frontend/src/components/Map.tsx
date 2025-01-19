@@ -42,9 +42,6 @@ function MapComp({ onMarkerPositionChange }: MapCompProps) {
       onMarkerPositionChange(newPosition);
     }
   };
-  const conditionalProps = {
-    center: markerPosition
-  };
   return (
     <div className="w-[548px] h-[350px]">
       <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
