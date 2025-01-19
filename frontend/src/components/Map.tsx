@@ -2,7 +2,11 @@ import React, {useState, useRef} from 'react';
 import { APIProvider, Map, AdvancedMarker } from '@vis.gl/react-google-maps';
 import { useMapsLibrary } from '@vis.gl/react-google-maps';
 
-function MapComp() {
+interface MapCompProps {
+  onMarkerPositionChange: (position: { lat: number; lng: number }) => void;
+}
+
+function MapComp({ onMarkerPositionChange }: MapCompProps) {
   const [markerPosition, setMarkerPosition] = useState({
     lat: 43.660663701375796,
     lng: -79.39655519409172,
@@ -13,10 +17,14 @@ function MapComp() {
     if (event.latLng) {
       const lat = event.latLng.lat();
       const lng = event.latLng.lng();
+      const newPosition = { lat, lng };
       setMarkerPosition({ lat, lng });
 
       //move the map to the position??? TODO
       console.log('Marker new position:', { lat, lng });
+
+      // Notify parent component
+      onMarkerPositionChange(newPosition);
     }
   };
 
@@ -24,10 +32,14 @@ function MapComp() {
     if (place && place.geometry?.location) {
       const lat = place.geometry.location.lat();
       const lng = place.geometry.location.lng();
+      const newPosition = { lat, lng };
       setSearch(true);
       setMarkerPosition({ lat, lng });
 
       console.log('Marker current position:', markerPosition.lat, markerPosition.lng);
+
+      // Notify parent component
+      onMarkerPositionChange(newPosition);
     }
   };
   const conditionalProps = {
@@ -53,11 +65,6 @@ function MapComp() {
           />
         </Map>
       </APIProvider>
-      {/* <div className="mt-4">
-        <p>
-          Current Coordinates: Latitude: {markerPosition.lat}, Longitude: {markerPosition.lng}
-        </p>
-      </div> */}
     </div>
   );
 }
@@ -89,7 +96,7 @@ const PlaceAutocompleteClassic = ({ onPlaceSelect }: Props) => {
       <input
         ref={inputRef}
         placeholder="Search for a location"
-        className="border border-gray-300 p-2 w-full rounded"
+        className="border border-deepgreen p-2 w-full rounded"
       />
     </div>
   );

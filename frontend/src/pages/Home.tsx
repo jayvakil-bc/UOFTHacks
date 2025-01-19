@@ -6,11 +6,51 @@ import Button from '../components/Button';
 
 
 function Home() {
-  const [capital, setCapital] = useState(50000); // State for Capital slider
-  const [teamSize, setTeamSize] = useState(5); // State for Team Size slider
+  const [capital, setCapital] = useState(50000);
+  const [teamSize, setTeamSize] = useState(5);
+  const [selectedType, setSelectedType] = useState("");
+  const [customType, setCustomType] = useState("");
+  const [markerPosition, setMarkerPosition] = useState({
+    lat: 43.660663701375796,
+    lng: -79.39655519409172,
+  });
+  const [priceRange, setPriceRange] = useState("");
+  const [description, setDescription] = useState("");
 
-  const [selectedType, setSelectedType] = useState(""); // State for dropdown selection
-  const [customType, setCustomType] = useState(""); // State for custom input
+
+  // const handleSubmit = async (event: { preventDefault: () => void; }) => {
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    const data = {
+      capital,
+      teamSize,
+      type: selectedType === "Other" ? customType : selectedType,
+      location: markerPosition, // Include latitude and longitude
+      priceRange,
+      description,
+    };
+
+    console.log("Form submission data:", data);
+
+    // try {
+    //   const response = await fetch("http://your-backend-route/api/analyze", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   });
+
+    //   if (!response.ok) {
+    //     throw new Error("Failed to submit data");
+    //   }
+
+    //   const result = await response.json();
+    //   console.log("Analysis result:", result);
+    // } catch (error) {
+    //   console.error("Error submitting data:", error);
+    // }
+  };
 
   const restaurantTypes = [
     "Fine Dining",
@@ -48,13 +88,16 @@ function Home() {
 
       {/* Main */}
 
-      <div className="my-8 py-8 px-[75px] text-left rounded-3xl h-[1850px] bg-shadow w-[700px]">
+      <form
+        onSubmit={handleSubmit}
+        className="my-8 py-8 px-[75px] text-left rounded-3xl h-[1850px] bg-shadow w-[700px]"
+      >
         <h2 className="pb-1"> Tell Us About Your Potential Restaurant</h2>
         <h3> Location </h3>
         <p className="pb-1"> The intended location of your restaurant:</p>
 
         <div className="flex justify-center w-[548px] h-[430px]">
-          <Map />
+          <Map onMarkerPositionChange={setMarkerPosition} />
         </div>
 
         <div className="border-y border-deepgreen pt-[20px] pb-[40px]">
@@ -171,8 +214,9 @@ function Home() {
           <Button type="submit"> Analyze </Button>
           <Button className="text-black" type="reset"> Clear </Button>
         </div>
+       
 
-      </div>
+      </form>
 
     </div>
   )

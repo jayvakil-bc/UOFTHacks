@@ -1,7 +1,7 @@
 // server.js
 import express from 'express';
 const app = express();
-const PORT = 3000;
+const PORT = 8000;
 import { analyzeFeasibility } from './analysis.js';
 
 // Middleware
