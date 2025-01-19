@@ -13,7 +13,7 @@ const AnalyzeRequest = () => {
     };
 
     try {
-      const res = await fetch('http://localhost:3000/analyze', {
+      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/analyze`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
