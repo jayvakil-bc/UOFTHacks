@@ -5,6 +5,7 @@ import CapSlider from '../components/CapSlider';
 import TeamSlider from '../components/TeamSlider';
 import Button from '../components/Button';
 
+
 function Home() {
   const [capital, setCapital] = useState(50000); // State for Capital slider
   const [teamSize, setTeamSize] = useState(5); // State for Team Size slider
@@ -25,6 +26,7 @@ function Home() {
       </div>
 
       {/* Main */}
+
       <div className="my-8 py-8 px-[75px] text-left rounded-3xl h-[1850px] bg-beige w-[700px]">
         <h2> Tell Us About Your Potential Restaurants</h2>
         <h3> Location </h3>
