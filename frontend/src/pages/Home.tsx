@@ -12,10 +12,16 @@ function Home() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
 
-      {/* Banner  */}
-      <div className="h-[190px] w-full bg-green">
-        <h1 className="pt-10 font-semibold">How Well Can My Restaurant Do?</h1>
-        <h3 >Location-Based Success Estimator for Restaurants</h3>
+      {/* Banner */}
+      <div className="relative h-[480px] w-full bg-[url('/banner.svg')] bg-cover bg-center flex items-center justify-center text-white">
+        {/* Black Transparent Overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+
+        {/* Content */}
+        <div className="relative z-10 text-center">
+          <h1 className="pt-10 font-semibold text-2xl">How Well Can My Restaurant Do?</h1>
+          <h3 className="text-lg">Location-Based Success Estimator for Restaurants</h3>
+        </div>
       </div>
 
       {/* Main */}
