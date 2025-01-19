@@ -26,7 +26,7 @@ function MapComp() {
   };
 
   return (
-    <div className="border border-camel w-[500px] h-[450px]">
+    <div className="w-[548px] h-[350px]">
       <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
         <PlaceAutocompleteClassic onPlaceSelect={handlePlaceSelect} />
         <Map
@@ -44,12 +44,6 @@ function MapComp() {
           />
         </Map>
       </APIProvider>
-      <div className="mt-4">
-        <p>
-          Current Coordinates: Latitude: {markerPosition.lat}, Longitude:{' '}
-          {markerPosition.lng}
-        </p>
-      </div>
     </div>
   );
 }
