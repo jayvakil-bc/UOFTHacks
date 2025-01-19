@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, {useState, useRef} from 'react';
 import { APIProvider, Map, AdvancedMarker } from '@vis.gl/react-google-maps';
 import { useMapsLibrary } from '@vis.gl/react-google-maps';
 
@@ -7,12 +7,15 @@ function MapComp() {
     lat: 43.660663701375796,
     lng: -79.39655519409172,
   });
+  const [search, setSearch] = useState(false);
 
   const handleDragEnd = (event: google.maps.MapMouseEvent) => {
     if (event.latLng) {
       const lat = event.latLng.lat();
       const lng = event.latLng.lng();
       setMarkerPosition({ lat, lng });
+
+      //move the map to the position??? TODO
       console.log('Marker new position:', { lat, lng });
     }
   };
@@ -21,15 +24,21 @@ function MapComp() {
     if (place && place.geometry?.location) {
       const lat = place.geometry.location.lat();
       const lng = place.geometry.location.lng();
+      setSearch(true);
       setMarkerPosition({ lat, lng });
+
+      console.log('Marker current position:', markerPosition.lat, markerPosition.lng);
     }
   };
-
+  const conditionalProps = {
+    center: markerPosition
+  };
   return (
     <div className="border border-camel w-[500px] h-[450px]">
       <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
         <PlaceAutocompleteClassic onPlaceSelect={handlePlaceSelect} />
         <Map
+            //{...(search ? { conditionalProps} : {})} //was trying to make a conditional prop
           mapId="your-map-id" // Replace with your actual Map ID
           defaultCenter={markerPosition}
           defaultZoom={12}
@@ -46,8 +55,7 @@ function MapComp() {
       </APIProvider>
       <div className="mt-4">
         <p>
-          Current Coordinates: Latitude: {markerPosition.lat}, Longitude:{' '}
-          {markerPosition.lng}
+          Current Coordinates: Latitude: {markerPosition.lat}, Longitude: {markerPosition.lng}
         </p>
       </div>
     </div>
