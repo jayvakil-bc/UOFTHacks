@@ -29,25 +29,6 @@ function Home() {
     };
 
     console.log('Form submission data:', data);
-
-    // try {
-    //   const response = await fetch("http://localhost:3000/analyze", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   });
-
-    //   if (!response.ok) {
-    //     throw new Error("Failed to submit data");
-    //   }
-
-    //   const result = await response.json();
-    //   console.log("Analysis result:", result);
-    // } catch (error) {
-    //   console.error("Error submitting data:", error);
-    // }
     
   };
 
