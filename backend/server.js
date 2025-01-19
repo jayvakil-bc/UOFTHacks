@@ -3,14 +3,9 @@ import axios from 'axios';
 import { OpenAI } from 'openai';
 import fetch from 'node-fetch';
 const app = express();
-<<<<<<< HEAD
-const PORT = 8000;
-import { analyzeFeasibility } from './analysis.js';
-=======
 const port = process.env.PORT || 8000;
 const googlePlacesApiKey = GOOGLE_PLACES_API_KEY; // Using the provided API key
 const openAiApiKey = OPENAI_API_KEY; // Using the provided API key
->>>>>>> 6c859527865e52b0ad17c52644da836c8ef96377
 
 const openai = new OpenAI({
   apiKey: openAiApiKey,
