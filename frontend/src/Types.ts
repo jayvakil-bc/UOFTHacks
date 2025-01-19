@@ -3,7 +3,8 @@ export interface Row{
     age: string,
     location: string,
     ethnicity: string,
-    percentage: number,
-    restaurant: number,
-    marketshare: number
+    percentage: string,
+    restaurant: string,
+    marketshare: string
+    [index: string]: string
 }

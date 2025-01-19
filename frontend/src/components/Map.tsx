@@ -7,7 +7,7 @@ function MapComp() {
     lat: 43.660663701375796,
     lng: -79.39655519409172,
   });
-  const [search, setSearch] = useState(false);
+  // const [search, setSearch] = useState(false);
 
   const handleDragEnd = (event: google.maps.MapMouseEvent) => {
     if (event.latLng) {
@@ -24,15 +24,15 @@ function MapComp() {
     if (place && place.geometry?.location) {
       const lat = place.geometry.location.lat();
       const lng = place.geometry.location.lng();
-      setSearch(true);
+      // setSearch(true);
       setMarkerPosition({ lat, lng });
 
       console.log('Marker current position:', markerPosition.lat, markerPosition.lng);
     }
   };
-  const conditionalProps = {
-    center: markerPosition
-  };
+  // const conditionalProps = {
+  //   center: markerPosition
+  // };
   return (
     <div className="border border-camel w-[500px] h-[450px]">
       <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
