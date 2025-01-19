@@ -54,6 +54,36 @@ app.post('/analyze', async (req, res) => {
 
     const analysis = openaiResponse.choices[0].message.content;
     console.log('OpenAI Response:', analysis);
+
+    // const headings = ["## Summary:\n", "## Success Analysis:\n", "## Competitor Analysis:\n",
+    //   "## Break-Even Analysis", "## Location Insights:\n", "## Recommendations:\n"];
+    // let remnant = "";
+    // let current = "";
+    // let whole = analysis.split("\n");
+
+    //split the analysis by blurb
+    // for (const heading of headings) {
+    //     [current, remnant] = whole.split(heading, 2);
+    //     console.log(`whole ${whole}`);
+    //     console.log(`remnant ${remnant}`);
+    //     console.log(`current ${current}`);
+    // }
+
+    // for (const str of whole) {
+    //   console.log(`${str}\n`);
+    // }
+    //
+    // const summary = whole[1];
+    // const strengths = "";
+    // const competitorAnalysis = "";
+    // const breakevenAnalysis = "";
+    // const locationInsights = "";
+    // const recommendations = "";
+    // const conclusion = whole[whole.length-1];
+    //
+    // console.log(`summary ${summary}`);
+    // console.log(`conclusion ${conclusion}`);
+
     res.send({ analysis });
 
   } catch (error) {

@@ -13,11 +13,11 @@ module.exports = {
         '3xl': '1.9rem',
         '4xl': '2.25rem',
         '5xl': '3.1rem',
-        '6xl': '4.5rem',
+        '6xl': '4.0rem',
         'custom-size': '2.7rem', // Add your custom size here
       },
       fontFamily: {
-        sans: ['Nunito', 'sans-serif'],
+        sans: ['Montserrat', 'serif'],
         logo: ['Questrial', 'regular 400']
       },
       colors: {

@@ -3,7 +3,6 @@ import TableHeader from "./TableHeader.tsx";
 import TableBody from "./TableBody.tsx";
 import {Row} from "../Types.ts";
 
-
 const defaultTableContainerStyle = "max-w-11/12 h-5/6 overflow-auto";
 const defaultTableStyle = "bg-beige border border-camel text-sm";
 

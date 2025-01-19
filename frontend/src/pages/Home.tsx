@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import {useState} from 'react';
 import Map from '../components/Map';
+import {useNavigate} from "react-router-dom";
 import CapSlider from '../components/CapSlider';
 import TeamSlider from '../components/TeamSlider';
 import Button from '../components/Button';
+import {useFormContext} from "../components/FormContext.tsx";
+import {useResultsContext} from "../components/ResultsContext.tsx";
 
 
 function Home() {
+  const navigate = useNavigate();
+
   // const [capital, setCapital] = useState(50000);
   const [teamSize, setTeamSize] = useState(5);
   const [selectedType, setSelectedType] = useState("");
@@ -17,6 +22,8 @@ function Home() {
   const [priceRange, setPriceRange] = useState("");
   const [description, setDescription] = useState("");
 
+    const {globalForm, setGlobalForm} = useFormContext();
+    const {globalResults, setGlobalResults} = useResultsContext();
 
   const handleSubmit = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
@@ -28,31 +35,63 @@ function Home() {
       longitude: markerPosition.lng
     };
 
+    //update the global form data
+      setGlobalForm({price: data.priceRange, restaurantType: data.theme, description:data.description,
+        location:`${markerPosition.lat} ${markerPosition.lng}`});
+
     console.log('Form submission data:', data);
-    
+
+    try {
+      const response = await fetch("http://localhost:3000/analyze", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then(async (response) => {
+        if (!response.ok) {
+          throw new Error("Failed to submit data");
+        }
+
+        const result = await response.json();
+        console.log("Analysis result:", result);
+
+        //update the global result data
+        setGlobalResults({summary: result.analysis});
+
+          }
+      );
+        navigate("/results");
+
+
+
+    } catch (error) {
+      console.error("Error submitting data:", error);
+    }
+
   };
 
-  const restaurantTypes = [
-    "Fine Dining",
-    "Casual Dining",
-    "Fast Casual",
-    "Fast Food",
-    "Café",
-    "Food Truck",
-    "Italian Restaurant",
-    "Chinese Restaurant",
-    "Japanese Restaurant",
-    "Mexican Restaurant",
-    "Indian Restaurant",
-    "Thai Restaurant",
-    "Mediterranean Restaurant",
-    "American Diner",
-    "Pizzeria",
-    "Other",
-  ];
+    const restaurantTypes = [
+        "Fine Dining",
+        "Casual Dining",
+        "Fast Casual",
+        "Fast Food",
+        "Café",
+        "Food Truck",
+        "Italian Restaurant",
+        "Chinese Restaurant",
+        "Japanese Restaurant",
+        "Mexican Restaurant",
+        "Indian Restaurant",
+        "Thai Restaurant",
+        "Mediterranean Restaurant",
+        "American Diner",
+        "Pizzeria",
+        "Other",
+    ];
 
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
+    return (
+        <div className="min-h-screen flex flex-col items-center justify-center">
 
       {/* Banner */}
       <div className="relative h-[480px] w-full bg-[url('/grad.png')] bg-cover bg-center flex items-center justify-center text-white">
@@ -66,7 +105,7 @@ function Home() {
         </div>
       </div>
 
-      {/* Main */}
+            {/* Main */}
 
       <form
         onSubmit={handleSubmit}
@@ -188,6 +227,7 @@ function Home() {
           >
             Clear
           </Button>
+
         </div>
       </form>
     </div>

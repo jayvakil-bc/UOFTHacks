@@ -1,7 +1,7 @@
 import {tv} from 'tailwind-variants'
 
 export const baseButton = tv({
-    base: 'bg-camel text-white mt-5 py-1 px-2 border border-deepgreen text-base' +
+    base: 'bg-camel text-white mt-5 py-1 px-4 border border-shadow text-base' +
         ' cursor-pointer hover:text-white hover:bg-deepgreen hover:border-transparent' +
         ' text-center relative align-middle inline-flex items-center justify-center' +
         ' rounded-md',

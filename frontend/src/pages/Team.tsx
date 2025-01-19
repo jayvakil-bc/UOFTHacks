@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const AnalyzeRequest = () => {
   const [response, setResponse] = useState(null);
@@ -34,10 +34,10 @@ const AnalyzeRequest = () => {
   };
 
   return (
-    <div>
-      <button onClick={sendAnalysisRequest}>Send Analysis Request</button>
-      {response && <div><h3>Test:</h3><pre>{response}</pre></div>}
-    </div>
+      <div>
+        <button onClick={sendAnalysisRequest}>Send Analysis Request</button>
+        {response && <div><h3>Test:</h3><pre>{response}</pre></div>}
+      </div>
   );
 };
 
