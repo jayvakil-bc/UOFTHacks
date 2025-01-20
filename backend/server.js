@@ -17,7 +17,7 @@ const openai = new OpenAI({
   apiKey: openAiApiKey,
 });
 
-app.use(express.json());
+app.use(express.static(path.join(__dirname, '../frontend/dist'))); // Important: Serve from 'dist' (Vite's build output)
 
 app.get('/', (req, res) => {
   res.send('Restaurant Consultant API');

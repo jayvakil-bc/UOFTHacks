@@ -10,7 +10,7 @@ export default function TeamSlider({ onTeamChange }: MinimumDistanceSliderProps)
   const [value, setValue] = React.useState<number>(10); // Single value state
 
   // Handle changes while dragging the slider
-  const handleChange = (event: Event, newValue: number | number[]) => {
+  const handleChange = (_event: Event, newValue: number | number[]) => {
     if (typeof newValue === "number") {
       setValue(newValue);
     }
@@ -18,7 +18,7 @@ export default function TeamSlider({ onTeamChange }: MinimumDistanceSliderProps)
 
   // Handle committed changes (when the user stops interacting with the slider)
   const handleChangeCommitted = (
-    event: React.SyntheticEvent | Event,
+    _event: React.SyntheticEvent | Event,
     newValue: number | number[]
   ) => {
     if (typeof newValue === "number") {
