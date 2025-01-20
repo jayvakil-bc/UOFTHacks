@@ -2,7 +2,7 @@ import Button from "../components/Button.tsx";
 import {useRef, useState} from "react";
 import emailjs from '@emailjs/browser';
 // import { Link, Element } from "react-scroll";
-import {useFormContext} from "../components/FormContext.tsx";
+//import {useFormContext} from "../components/FormContext.tsx";
 import {useResultsContext} from "../components/ResultsContext.tsx";
 import ReactMarkdown from "react-markdown"
 
@@ -17,23 +17,24 @@ export const Results = ()=>{
     const [showForm, setShowForm] = useState(false);
     const [confirmation, setConfirmation] = useState(false);
 
-    const {globalForm, setGlobalForm} = useFormContext();
+    //const {globalForm, setGlobalForm} = useFormContext();
     const {globalResults} = useResultsContext();
 
-    const navitems = [
-        {name: "Summary", href:"summary"},
-        {name: "Demographics", href:"demographics"},
-        {name: "Break-Even Analysis", href:"breakeven"},
-        {name: "Competitors", href:"competitors"},
-        {name: "Information you entered", href:"iue"},
-        {name: "Rerun", href:"rerun"},
-    ];
+    //const navitems = [
+    //    {name: "Summary", href:"summary"},
+    //    {name: "Demographics", href:"demographics"},
+    //    {name: "Break-Even Analysis", href:"breakeven"},
+    //    {name: "Competitors", href:"competitors"},
+    //    {name: "Information you entered", href:"iue"},
+    //    {name: "Rerun", href:"rerun"},
+    //];
 
 
-    const form = useRef("");
+    const formRef = useRef(null);
     function sendEmail(event: React.FormEvent){
         event.preventDefault();
-        emailjs.sendForm("service_mfymiy9", 'REPORT', form.current,
+        if (formRef.current){
+        emailjs.sendForm("service_mfymiy9", 'REPORT', formRef.current,
                 {publicKey: "Tbl6EK2tpx27fsbFP"}
             ).then(() => {
                 console.log('SUCCESS!');
@@ -45,18 +46,19 @@ export const Results = ()=>{
                     console.log('FAILED...', error.name);
                 },
             );
+        }
     }
-    function rerun(){
-        console.log("rerun button pressed");
-    }
+    //function rerun(){
+    //    console.log("rerun button pressed");
+    //}
 
     const textboxstyle = "bg-transparent w-full mt-1 py-1 px-2 border border-camel";
-    const navitemstyle = "text-sm flex flex-col p-2 w-full hover:text-white hover:font-medium hover:bg-camel hover:cursor-pointer";
+    //const navitemstyle = "text-sm flex flex-col p-2 w-full hover:text-white hover:font-medium hover:bg-camel hover:cursor-pointer";
     return(
         <div className={"flex flex-row items-center justify-center gap-16 border-t border-camel"}>
             {showForm ?
                 <div className={"absolute rounded-xl fixed top-0 left-0 z-10 flex items-center justify-center backdrop-grayscale min-w-full min-h-screen"}>
-                <form ref={form} onSubmit={sendEmail}
+                <form ref={formRef} onSubmit={sendEmail}
                       /*TODO make this a hidden form with the analytics filled in as the message*/
                       className={"bg-beige border border-camel p-8"}>
                     <div className="grid items-center max-w-[300px]">

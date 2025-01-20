@@ -1,11 +1,11 @@
 import {useState} from 'react';
 import Map from '../components/Map';
 import {useNavigate} from "react-router-dom";
-import CapSlider from '../components/CapSlider';
+//import CapSlider from '../components/CapSlider';
 import TeamSlider from '../components/TeamSlider';
 import Button from '../components/Button';
-import {useFormContext} from "../components/FormContext.tsx";
-import {useResultsContext} from "../components/ResultsContext.tsx";
+//import {useFormContext} from "../components/FormContext.tsx";
+//import {useResultsContext} from "../components/ResultsContext.tsx";
 
 
 function Home() {
@@ -22,8 +22,8 @@ function Home() {
   const [priceRange, setPriceRange] = useState("");
   const [description, setDescription] = useState("");
 
-    const {globalForm, setGlobalForm} = useFormContext();
-    const {globalResults, setGlobalResults} = useResultsContext();
+    //const {globalForm, setGlobalForm} = useFormContext();
+    //const {globalResults, setGlobalResults} = useResultsContext();
 
   const handleSubmit = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
@@ -36,37 +36,33 @@ function Home() {
     };
 
     //update the global form data
-      setGlobalForm({price: data.priceRange, restaurantType: data.theme, description:data.description,
-        location:`${markerPosition.lat} ${markerPosition.lng}`});
+      //setGlobalForm({price: data.priceRange, restaurantType: data.theme, description:data.description,
+      //  location:`${markerPosition.lat} ${markerPosition.lng}`});
 
     console.log('Form submission data:', data);
 
     try {
-      const response = await fetch("http://localhost:3000/analyze", {
+      const response = await fetch("/analyze", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-      }).then(async (response) => {
-        if (!response.ok) {
-          throw new Error("Failed to submit data");
-        }
+      });
 
-        const result = await response.json();
-        console.log("Analysis result:", result);
+      if (!response.ok) {
+        throw new Error("Failed to submit data");
+      }
 
-        //update the global result data
-        setGlobalResults({summary: result.analysis});
+      const result = await response.json();
+      console.log("Analysis result:", result);
 
-          }
-      );
-        navigate("/results");
+      //update the global result data
+      //setGlobalResults({summary: result.analysis});
 
-
-
+      navigate("/results");
     } catch (error) {
-      console.error("Error submitting data:", error);
+      console.error("Error submitting form:", error);
     }
 
   };
@@ -216,7 +212,7 @@ function Home() {
             type="button"
             onClick={() => {
               // setCapital(50000);
-              setTeamSize(5);
+              setTeamSize(teamSize);
               setSelectedType('');
               setCustomType('');
               setMarkerPosition({ lat: 43.660663701375796, lng: -79.39655519409172 });

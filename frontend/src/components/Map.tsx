@@ -11,7 +11,7 @@ function MapComp({ onMarkerPositionChange }: MapCompProps) {
     lat: 43.660663701375796,
     lng: -79.39655519409172,
   });
-  const [search, setSearch] = useState(false);
+  //const [search, setSearch] = useState(false);
 
   const handleDragEnd = (event: google.maps.MapMouseEvent) => {
     if (event.latLng) {
@@ -33,7 +33,7 @@ function MapComp({ onMarkerPositionChange }: MapCompProps) {
       const lat = place.geometry.location.lat();
       const lng = place.geometry.location.lng();
       const newPosition = { lat, lng };
-      setSearch(true);
+      //setSearch(true);
       setMarkerPosition({ lat, lng });
 
       console.log('Marker current position:', markerPosition.lat, markerPosition.lng);
