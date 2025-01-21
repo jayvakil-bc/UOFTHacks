@@ -3,7 +3,10 @@
   "builds": [
     {
       "src": "frontend/package.json",
-      "use": "@vercel/react"
+      "use": "@vercel/static_build",
+      "config": {
+        "distDir": "frontend/dist"
+      }
     },
     {
       "src": "backend/server.js",
